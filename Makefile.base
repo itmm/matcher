@@ -1,0 +1,15 @@
+CFLAGS += -Wall -std=c11
+
+C_FILES = $(wildcard *.c)
+H_FILES = $(wildcard *.h)
+O_FILES = $(C_FILES:.c=.o)
+SOURCES = $(C_FILES) $(H_FILES)
+
+$(APP): $(O_FILES)
+
+$(SOURCES):
+	touch $@
+
+.PHONY: clean
+clean:
+	rm -f $(O_FILES) $(APP)
